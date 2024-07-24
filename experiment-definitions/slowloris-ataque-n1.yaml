@@ -1,0 +1,91 @@
+Experiment:
+  name: slowloris_default
+  nodeactors:
+    - name: 'na-server'
+      persitent_volume_path: "/app/packets.pcap"
+      replicas: 1
+      containers:
+        - name: tshark
+          image: ghcr.io/mentoredtestbed/mentored-tshark
+          imagePullPolicy: "Always"
+          command: ["/entry.sh"]
+          args: ["tshark", "-i", "net1", "-x", "-w", "packets.pcap"]
+          securityContext:
+            privileged: true
+          env:
+            - name: TIMEOUT_CMD
+              value: "300"
+        - name: 'server'
+          image: ghcr.io/mentoredtestbed/generic-apache-flask-webserver:latest
+          imagePullPolicy: "Always"
+          securityContext:
+            privileged: true
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "1G"
+              cpu: "1"
+            limits:
+              memory: "2G"
+              cpu: "2"
+      region: 'ids-go'    
+    
+    - name: 'generic-client-pe'
+      persitent_volume_path: "/client_delay.csv"
+      replicas: 30
+      containers:
+        - name: 'client-rn'
+          image: ghcr.io/mentoredtestbed/generic-client:latest
+          imagePullPolicy: "Always"
+          command: ["/entry.sh"]
+          args: ['python3', 'client_web_metrics.py', "1", "1"]
+          env:
+            - name: TIMEOUT_CMD
+              value: "300"
+            - name: ADD_SERVER_IP_TO_COMMAND
+              value: "true"
+          securityContext:
+            privileged: true
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128M"
+              cpu: "200m"
+      region: 'ids-pe'
+
+    - name: 'generic-botnet-rj'
+      persitent_volume_path: "/MENTORED_IP_LIST.yaml"
+      replicas: 10
+      containers:
+        - name: 'botnet-rn'
+          image: ghcr.io/mentoredtestbed/generic-botnet:latest
+          imagePullPolicy: "Always"
+          command: ["/entry.sh"]
+          # args: ["slowloris", "-p", "80"]
+          args: ["slowloris", "-p", "80", "--randuseragents", "-s", "300"]
+          # args: ["hping3", "-S", "--faster", "-p", "80"]
+          # args: ["hping3", "-S", "--flood", "-S", "-d 1024", "-p", "80"]
+          env:
+            - name: PROTOCOL
+              value: "ICMP"
+            - name: TIMEOUT_CMD
+              value: "180"
+            - name: TIME_WAIT_START
+              value: "60"
+            - name: ADD_SERVER_IP_TO_COMMAND
+              value: "true"
+          securityContext:
+            privileged: true
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128M"
+              cpu: "200m"
+      region: 'ids-rj'
+
+  topology: None
