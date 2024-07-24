@@ -46,7 +46,7 @@ Esses arquivos consideram uma sintaxe que compartilha elementos com a [sintaxe d
 Esses arquivos descrevem dois ataques DDoS considerando o seguinte cenário:
 
 #### Slowloris - Ataque nº 1
-  - 1 servidor Apache com configuração padrão sendo executado em um servidor em **Goiás** (`ids-go`)
+  - 1 servidor Apache com **configuração padrão** sendo executado em um servidor em **Goiás** (`ids-go`)
   - Além do servidor Apache, um segundo container é usado para monitorar o tráfego de rede com o software `tshark`
   - 30 clientes em **Pernambuco** (`ids-pe`) acessando o servidor Apache com requisições web (HTTP) a cada 1 segundo
   - Os clientes salvam o tempo de solicitação de cada requisição
@@ -54,7 +54,7 @@ Esses arquivos descrevem dois ataques DDoS considerando o seguinte cenário:
   - 10 nós em **Rio de Janeiro** (`ids-rj`) atacando o servidor Apache usando os ataques DDoS slowloris
 
 #### Slowloris - Ataque nº 2
-  - 1 servidor Apache com o módulo _mod_reqtimeout_ habilitado sendo executado em um servidor em **Goiás** (`ids-go`)
+  - 1 servidor Apache com o **módulo _mod_reqtimeout_ habilitado** sendo executado em um servidor em **Goiás** (`ids-go`)
   - Além do servidor Apache, um segundo container é usado para monitorar o tráfego de rede com o software `tshark`
   - 30 clientes em **Pernambuco** (`ids-pe`) acessando o servidor Apache com requisições web (HTTP) a cada 1 segundo
   - Os clientes salvam o tempo de solicitação de cada requisição
