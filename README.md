@@ -1,6 +1,6 @@
 # demo-wtestbed-csbc-2024
 
-Esse repositório tem como principal apresentar a demo **Analisando ataques Slowloris com o MENTORED _Testbed_** apresentado no evento WTestbed CSBC 2024.
+Esse repositório tem como principal objetivo apresentar a demo **Analisando ataques Slowloris com o MENTORED _Testbed_** apresentado no evento WTestbed CSBC 2024.
 
 Os slides utilizados para apresentar a demo estão disponível em [./doc/csbc2024_wtestbed_slide_presentation.pdf](./doc/csbc2024_wtestbed_slide_presentation.pdf)
 
