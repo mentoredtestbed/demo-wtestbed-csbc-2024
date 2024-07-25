@@ -28,7 +28,7 @@ Uma maneira de acessar essas vantagens é utilizar as imagens disponíveis publi
 Essas imagens também podem ser usadas como base para criar uma versão extendida customizada. Por exemplo:
 
 ```Dockerfile
-FROM ghcr.io/mentoredtested/mentored-base
+FROM ghcr.io/mentoredtestbed/mentored-base
 
 RUN pip3 install --break-system-packages numpy
 
