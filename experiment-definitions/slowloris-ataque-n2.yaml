@@ -67,10 +67,7 @@ Experiment:
           image: ghcr.io/mentoredtestbed/generic-botnet:latest
           imagePullPolicy: "Always"
           command: ["/entry.sh"]
-          # args: ["slowloris", "-p", "80"]
           args: ["slowloris", "-p", "80", "--randuseragents", "-s", "300"]
-          # args: ["hping3", "-S", "--faster", "-p", "80"]
-          # args: ["hping3", "-S", "--flood", "-S", "-d 1024", "-p", "80"]
           env:
             - name: PROTOCOL
               value: "ICMP"
