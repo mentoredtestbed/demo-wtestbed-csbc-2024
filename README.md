@@ -2,7 +2,7 @@
 
 Esse repositório tem como principal apresentar a demo **Analisando ataques Slowloris com o MENTORED _Testbed_** apresentado no evento WTestbed CSBC 2024.
 
-Os slides utilizados para apresentar a demo estão disponível em [./doc/sbrc2024_testbed_slide_presentation.pdf](./doc/csbc2024_wtestbed_slide_presentation.pdf)
+Os slides utilizados para apresentar a demo estão disponível em [./doc/csbc2024_wtestbed_slide_presentation.pdf](./doc/csbc2024_wtestbed_slide_presentation.pdf)
 
 ## Criando seu experimento de segurança no MENTORED _Testbed_
 
